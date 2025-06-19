@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/Widgets/Categories_Listview.dart';
 import 'package:news_app/Widgets/news-list-view-builder.dart';
-import 'package:news_app/Widgets/news_list-view.dart';
 
-class NewsApp extends StatelessWidget {
-  const NewsApp({super.key});
+class CategoryScreen extends StatelessWidget {
+  final String categoryName;
+  const CategoryScreen({super.key, required this.categoryName});
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +23,9 @@ class NewsApp extends StatelessWidget {
         ),
       ),
       body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          SliverToBoxAdapter(child: const CategoriesListview()),
-          NewsListViewBuilder(),
-        ],
+        physics: BouncingScrollPhysics(),
+        slivers: [NewsListViewBuilder(categoryName: categoryName)],
       ),
-      //Column(children: [CategoriesListview(), NewsListview()]),
     );
   }
 }

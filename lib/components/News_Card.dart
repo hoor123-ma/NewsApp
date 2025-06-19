@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/Models/article_model.dart';
+import 'package:news_app/screens/NewsScreen.dart';
 
 class NewsCard extends StatelessWidget {
   final ArticleModel article;
@@ -12,14 +13,24 @@ class NewsCard extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(5),
-            child: Image.network(
-              article.image,
-              width: 400,
-              height: 200,
-              fit: BoxFit.fill,
+          GestureDetector(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(5),
+              child: Image.network(
+                article.image,
+                width: 400,
+                height: 220,
+                fit: BoxFit.fill,
+              ),
             ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NewsScreen(article: article),
+                ),
+              );
+            },
           ),
 
           const SizedBox(height: 12),

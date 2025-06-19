@@ -7,23 +7,21 @@ class NewsService {
   NewsService({required this.query});
 
   Future<List<ArticleModel>> getNews() async {
-    Response response = await dio.get(query);
-    Map<String, dynamic> jsonData = response.data;
-    List<dynamic> articles = jsonData['articles'];
-    //this equal => List<Map<String, dynamic>> articles=jsonData['articles'] as List<Map<String,dynamic>>;
+    try {
+      Response response = await dio.get(query);
+      Map<String, dynamic> jsonData = response.data;
+      List<dynamic> articles = jsonData['articles'];
+      //this equal => List<Map<String, dynamic>> articles=jsonData['articles'] as List<Map<String,dynamic>>;
 
-    List<ArticleModel> articlesList = [];
+      List<ArticleModel> articlesList = [];
 
-    for (var article in articles) {
-      ArticleModel articleModel = ArticleModel(
-        image:
-            article['urlToImage'] ??
-            'https://pco-eu.com/wp-content/uploads/2021/02/coldset.jpg',
-        title: article['title'],
-        description: article['description'] ?? 'No description',
-      );
-      articlesList.add(articleModel);
+      for (var article in articles) {
+        ArticleModel articleModel = ArticleModel.fromJson(article);
+        articlesList.add(articleModel);
+      }
+      return articlesList;
+    } catch (e) {
+      throw Exception();
     }
-    return articlesList;
   }
 }
