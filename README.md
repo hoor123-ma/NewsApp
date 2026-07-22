@@ -1,4 +1,4 @@
-# 📰 News App
+#  News App
 
 > A Flutter application that delivers the latest news from around the world using a News API.
 
@@ -6,11 +6,11 @@
 
 ## ✨ Features
 
-- 📰 Browse the latest news
-- 🔍 Search for articles
-- 📂 News categories
-- 🌐 API Integration
-- ⚡ Fast and responsive UI
+-  Browse the latest news
+-  Search for articles
+-  News categories
+-  API Integration
+-  Fast and responsive UI
 
 ---
 
@@ -21,8 +21,3 @@
 - REST API
 - Dio
 - Bloc/Cubit
-
-
-**Hoor Mahmoud**
-
-⭐ If you like this project, don't forget to give it a star!
